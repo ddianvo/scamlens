@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: scamlens
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scamlens_local_demo}
+      POSTGRES_DB: scamlens
+    ports: ['127.0.0.1:55432:5432']
+    volumes: ['scamlens-data:/var/lib/postgresql']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U scamlens']
+      interval: 5s
+      retries: 10
+volumes:
+  scamlens-data:

@@ -1,0 +1,36 @@
+{
+  "name": "scamlens",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "start": "node apps/api/dist/main.js",
+    "deploy:prepare": "npm run migration:run && npm run seed",
+    "demo": "node scripts/demo.mjs",
+    "dev": "concurrently -k -n API,WEB \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "build": "npm run build -w apps/api && npm run build -w apps/web",
+    "db:local": "node scripts/local-db.mjs",
+    "migration:run": "npm run migration:run -w apps/api",
+    "migration:revert": "npm run migration:revert -w apps/api",
+    "seed": "npm run seed -w apps/api",
+    "test": "npm run test -w apps/api && node --test tests/integration.mjs"
+  },
+  "overrides": {
+    "rollup": "$rollup",
+    "glob": "$glob",
+    "typeorm": {
+      "glob": "14.0.6"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.3",
+    "embedded-postgres": "18.6.0-beta.19",
+    "glob": "14.0.6",
+    "prettier": "^3.6.2",
+    "rollup": "npm:@rollup/wasm-node@^4.68.7"
+  }
+}

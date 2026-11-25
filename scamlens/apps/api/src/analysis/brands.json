@@ -1,0 +1,6 @@
+[
+  { "name": "Vietcombank", "domains": ["vietcombank.com.vn"], "aliases": ["vietcombank"] },
+  { "name": "BIDV", "domains": ["bidv.com.vn"], "aliases": ["bidv"] },
+  { "name": "Techcombank", "domains": ["techcombank.com"], "aliases": ["techcombank"] },
+  { "name": "MoMo", "domains": ["momo.vn"], "aliases": ["momo"] }
+]
